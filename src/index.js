@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 
-function Counter() {
-    const [count, setCount] = useState(0);
+function counterState(initial) {
+    const [count, setCount] = useState(initial);
 
-    function handleIncrementClick() {
+    function increment() {
         setCount(prevCount => prevCount + 1);
     }
+
+    return [count, increment];
+}
+
+function Counter() {
+    const [count, handleIncrementClick] = counterState(0);
 
     return (
         <>
